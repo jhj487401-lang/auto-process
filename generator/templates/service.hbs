@@ -1,0 +1,17 @@
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from '../../common/prisma/prisma.service.js';
+import { BaseCrudService } from '../../common/base-crud.service.js';
+import type { {{pascalCase name}} } from '../../generated/prisma/client.js';
+import { Create{{pascalCase name}}Dto } from './dto/create-{{kebabCase name}}.dto.js';
+import { Update{{pascalCase name}}Dto } from './dto/update-{{kebabCase name}}.dto.js';
+
+@Injectable()
+export class {{pascalCase name}}Service extends BaseCrudService<
+  {{pascalCase name}},
+  Create{{pascalCase name}}Dto,
+  Update{{pascalCase name}}Dto
+> {
+  constructor(prisma: PrismaService) {
+    super(prisma.{{camelCase name}});
+  }
+}

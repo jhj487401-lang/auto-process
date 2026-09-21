@@ -1,0 +1,14 @@
+{{#if validatorImports.length}}
+import { {{#each validatorImports}}{{this}}{{#unless @last}}, {{/unless}}{{/each}} } from 'class-validator';
+
+{{/if}}
+export class Create{{pascalCase name}}Dto {
+{{#each fields}}
+  {{#if optional}}
+  @IsOptional()
+  {{/if}}
+  @{{validator}}()
+  {{name}}{{#if optional}}?{{/if}}: {{tsType}};
+
+{{/each}}
+}

@@ -1,0 +1,35 @@
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Query } from '@nestjs/common';
+import { {{pascalCase name}}Service } from './{{kebabCase name}}.service.js';
+import { Create{{pascalCase name}}Dto } from './dto/create-{{kebabCase name}}.dto.js';
+import { Update{{pascalCase name}}Dto } from './dto/update-{{kebabCase name}}.dto.js';
+import { PaginationQueryDto } from '../../common/dto/pagination-query.dto.js';
+
+@Controller('{{pluralKebab name}}')
+export class {{pascalCase name}}Controller {
+  constructor(private readonly service: {{pascalCase name}}Service) {}
+
+  @Post()
+  create(@Body() dto: Create{{pascalCase name}}Dto) {
+    return this.service.create(dto);
+  }
+
+  @Get()
+  findAll(@Query() query: PaginationQueryDto) {
+    return this.service.findAll(query);
+  }
+
+  @Get(':id')
+  findOne(@Param('id', ParseIntPipe) id: number) {
+    return this.service.findOne(id);
+  }
+
+  @Patch(':id')
+  update(@Param('id', ParseIntPipe) id: number, @Body() dto: Update{{pascalCase name}}Dto) {
+    return this.service.update(id, dto);
+  }
+
+  @Delete(':id')
+  remove(@Param('id', ParseIntPipe) id: number) {
+    return this.service.remove(id);
+  }
+}
