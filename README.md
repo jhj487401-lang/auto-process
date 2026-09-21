@@ -1,5 +1,7 @@
 # auto-process
 
+Repository: https://github.com/jhj487401-lang/auto-process
+
 NestJS + Prisma(PostgreSQL) backend with a CLI generator that scaffolds a
 complete, isolated CRUD base for any new entity, plus a separate generator
 for hand-written features that never touches generated CRUD code.
