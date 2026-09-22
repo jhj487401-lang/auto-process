@@ -1,9 +1,11 @@
 import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Query } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { NotificationService } from './notification.service.js';
 import { CreateNotificationDto } from './dto/create-notification.dto.js';
 import { UpdateNotificationDto } from './dto/update-notification.dto.js';
 import { PaginationQueryDto } from '../../common/dto/pagination-query.dto.js';
 
+@ApiTags('notifications')
 @Controller('notifications')
 export class NotificationController {
   constructor(private readonly service: NotificationService) {}

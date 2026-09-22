@@ -1,9 +1,11 @@
 import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Query } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { ShipmentService } from './shipment.service.js';
 import { CreateShipmentDto } from './dto/create-shipment.dto.js';
 import { UpdateShipmentDto } from './dto/update-shipment.dto.js';
 import { PaginationQueryDto } from '../../common/dto/pagination-query.dto.js';
 
+@ApiTags('shipments')
 @Controller('shipments')
 export class ShipmentController {
   constructor(private readonly service: ShipmentService) {}

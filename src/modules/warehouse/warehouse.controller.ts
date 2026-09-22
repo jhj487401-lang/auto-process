@@ -1,9 +1,11 @@
 import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Query } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { WarehouseService } from './warehouse.service.js';
 import { CreateWarehouseDto } from './dto/create-warehouse.dto.js';
 import { UpdateWarehouseDto } from './dto/update-warehouse.dto.js';
 import { PaginationQueryDto } from '../../common/dto/pagination-query.dto.js';
 
+@ApiTags('warehouses')
 @Controller('warehouses')
 export class WarehouseController {
   constructor(private readonly service: WarehouseService) {}

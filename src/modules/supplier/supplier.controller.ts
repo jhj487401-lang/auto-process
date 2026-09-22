@@ -1,9 +1,11 @@
 import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Query } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { SupplierService } from './supplier.service.js';
 import { CreateSupplierDto } from './dto/create-supplier.dto.js';
 import { UpdateSupplierDto } from './dto/update-supplier.dto.js';
 import { PaginationQueryDto } from '../../common/dto/pagination-query.dto.js';
 
+@ApiTags('suppliers')
 @Controller('suppliers')
 export class SupplierController {
   constructor(private readonly service: SupplierService) {}

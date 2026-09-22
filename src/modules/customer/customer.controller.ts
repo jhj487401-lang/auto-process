@@ -1,9 +1,11 @@
 import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Query } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { CustomerService } from './customer.service.js';
 import { CreateCustomerDto } from './dto/create-customer.dto.js';
 import { UpdateCustomerDto } from './dto/update-customer.dto.js';
 import { PaginationQueryDto } from '../../common/dto/pagination-query.dto.js';
 
+@ApiTags('customers')
 @Controller('customers')
 export class CustomerController {
   constructor(private readonly service: CustomerService) {}

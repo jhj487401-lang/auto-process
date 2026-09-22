@@ -1,9 +1,11 @@
 import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Query } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { ReturnService } from './return.service.js';
 import { CreateReturnDto } from './dto/create-return.dto.js';
 import { UpdateReturnDto } from './dto/update-return.dto.js';
 import { PaginationQueryDto } from '../../common/dto/pagination-query.dto.js';
 
+@ApiTags('returns')
 @Controller('returns')
 export class ReturnController {
   constructor(private readonly service: ReturnService) {}

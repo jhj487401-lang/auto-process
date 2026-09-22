@@ -41,6 +41,12 @@ npm run prisma:migrate  # creates tables from prisma/schema/*.prisma
 npm run start:dev
 ```
 
+Then open **http://localhost:3000/api** for the Swagger UI — every entity's
+endpoints, request/response shapes, and a "Try it out" button to call them
+directly from the browser. DTO field types are picked up automatically via
+the `@nestjs/swagger` CLI plugin (`nest-cli.json`), so generated entities
+never need manual `@ApiProperty()` decorators.
+
 ### Local database (no Docker/Postgres install needed)
 
 No local PostgreSQL or Docker in this environment, so the dev database is
