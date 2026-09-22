@@ -1,0 +1,591 @@
+### auto-process API requests
+### Install the "REST Client" VS Code extension (humao.rest-client), then
+### click "Send Request" above any block below. Server must be running
+### (npm run start:dev) and the local DB up (npx prisma dev ls).
+
+@baseUrl = http://localhost:3000
+
+### Root (sanity check — always "Hello World!")
+GET {{baseUrl}}/
+
+
+### ============ Product ============
+
+### Create Product
+POST {{baseUrl}}/products
+Content-Type: application/json
+
+{
+  "name": "Keyboard",
+  "price": 49,
+  "description": "Mechanical keyboard",
+  "inStock": true
+}
+
+### List Products
+GET {{baseUrl}}/products
+
+### Get Product by id
+GET {{baseUrl}}/products/1
+
+### Update Product
+PATCH {{baseUrl}}/products/1
+Content-Type: application/json
+
+{
+  "price": 39
+}
+
+### Delete Product
+DELETE {{baseUrl}}/products/1
+
+
+### ============ Category ============
+
+### Create Category
+POST {{baseUrl}}/categories
+Content-Type: application/json
+
+{
+  "name": "Electronics"
+}
+
+### List Categories
+GET {{baseUrl}}/categories
+
+### Get Category by id
+GET {{baseUrl}}/categories/1
+
+### Update Category
+PATCH {{baseUrl}}/categories/1
+Content-Type: application/json
+
+{
+  "name": "Home Electronics"
+}
+
+### Delete Category
+DELETE {{baseUrl}}/categories/1
+
+
+### ============ Order ============
+
+### Create Order
+POST {{baseUrl}}/orders
+Content-Type: application/json
+
+{
+  "orderNumber": "ORD-1001",
+  "totalAmount": 130,
+  "isPaid": false
+}
+
+### List Orders
+GET {{baseUrl}}/orders
+
+### Get Order by id
+GET {{baseUrl}}/orders/1
+
+### Update Order
+PATCH {{baseUrl}}/orders/1
+Content-Type: application/json
+
+{
+  "isPaid": true,
+  "notes": "paid via card"
+}
+
+### Delete Order
+DELETE {{baseUrl}}/orders/1
+
+
+### ============ Customer ============
+
+### Create Customer
+POST {{baseUrl}}/customers
+Content-Type: application/json
+
+{
+  "name": "Jane Doe",
+  "email": "jane@example.com",
+  "isActive": true
+}
+
+### List Customers
+GET {{baseUrl}}/customers
+
+### Get Customer by id
+GET {{baseUrl}}/customers/1
+
+### Update Customer
+PATCH {{baseUrl}}/customers/1
+Content-Type: application/json
+
+{
+  "phone": "010-1234-5678"
+}
+
+### Delete Customer
+DELETE {{baseUrl}}/customers/1
+
+
+### ============ Review ============
+
+### Create Review
+POST {{baseUrl}}/reviews
+Content-Type: application/json
+
+{
+  "reviewerName": "Alex",
+  "rating": 5,
+  "comment": "Great product"
+}
+
+### List Reviews
+GET {{baseUrl}}/reviews
+
+### Get Review by id
+GET {{baseUrl}}/reviews/1
+
+### Update Review
+PATCH {{baseUrl}}/reviews/1
+Content-Type: application/json
+
+{
+  "rating": 4
+}
+
+### Delete Review
+DELETE {{baseUrl}}/reviews/1
+
+
+### ============ Supplier ============
+
+### Create Supplier
+POST {{baseUrl}}/suppliers
+Content-Type: application/json
+
+{
+  "name": "Acme Corp",
+  "contactEmail": "sales@acme.com",
+  "isPreferred": true
+}
+
+### List Suppliers
+GET {{baseUrl}}/suppliers
+
+### Get Supplier by id
+GET {{baseUrl}}/suppliers/1
+
+### Update Supplier
+PATCH {{baseUrl}}/suppliers/1
+Content-Type: application/json
+
+{
+  "phone": "555-0100"
+}
+
+### Delete Supplier
+DELETE {{baseUrl}}/suppliers/1
+
+
+### ============ Warehouse ============
+
+### Create Warehouse
+POST {{baseUrl}}/warehouses
+Content-Type: application/json
+
+{
+  "name": "Central Hub",
+  "location": "Seoul",
+  "capacity": 5000,
+  "isActive": true
+}
+
+### List Warehouses
+GET {{baseUrl}}/warehouses
+
+### Get Warehouse by id
+GET {{baseUrl}}/warehouses/1
+
+### Update Warehouse
+PATCH {{baseUrl}}/warehouses/1
+Content-Type: application/json
+
+{
+  "capacity": 6000
+}
+
+### Delete Warehouse
+DELETE {{baseUrl}}/warehouses/1
+
+
+### ============ Payment ============
+
+### Create Payment
+POST {{baseUrl}}/payments
+Content-Type: application/json
+
+{
+  "method": "card",
+  "amount": 100,
+  "isSuccessful": true,
+  "paidAt": "2026-09-21T00:00:00.000Z"
+}
+
+### List Payments
+GET {{baseUrl}}/payments
+
+### Get Payment by id
+GET {{baseUrl}}/payments/1
+
+### Update Payment
+PATCH {{baseUrl}}/payments/1
+Content-Type: application/json
+
+{
+  "isSuccessful": false
+}
+
+### Delete Payment
+DELETE {{baseUrl}}/payments/1
+
+
+### ============ Shipment ============
+
+### Create Shipment
+POST {{baseUrl}}/shipments
+Content-Type: application/json
+
+{
+  "trackingNumber": "TRK-001",
+  "carrier": "DHL",
+  "status": "pending"
+}
+
+### List Shipments
+GET {{baseUrl}}/shipments
+
+### Get Shipment by id
+GET {{baseUrl}}/shipments/1
+
+### Update Shipment
+PATCH {{baseUrl}}/shipments/1
+Content-Type: application/json
+
+{
+  "status": "shipped",
+  "shippedAt": "2026-09-21T00:00:00.000Z"
+}
+
+### Delete Shipment
+DELETE {{baseUrl}}/shipments/1
+
+
+### ============ Coupon ============
+
+### Create Coupon
+POST {{baseUrl}}/coupons
+Content-Type: application/json
+
+{
+  "code": "SAVE10",
+  "discountPercent": 10,
+  "expiresAt": "2026-12-31T00:00:00.000Z",
+  "isActive": true
+}
+
+### List Coupons
+GET {{baseUrl}}/coupons
+
+### Get Coupon by id
+GET {{baseUrl}}/coupons/1
+
+### Update Coupon
+PATCH {{baseUrl}}/coupons/1
+Content-Type: application/json
+
+{
+  "isActive": false
+}
+
+### Delete Coupon
+DELETE {{baseUrl}}/coupons/1
+
+
+### ============ Address ============
+
+### Create Address
+POST {{baseUrl}}/addresses
+Content-Type: application/json
+
+{
+  "street": "123 Main St",
+  "city": "Seoul",
+  "postalCode": "12345",
+  "isDefault": true
+}
+
+### List Addresses
+GET {{baseUrl}}/addresses
+
+### Get Address by id
+GET {{baseUrl}}/addresses/1
+
+### Update Address
+PATCH {{baseUrl}}/addresses/1
+Content-Type: application/json
+
+{
+  "city": "Busan"
+}
+
+### Delete Address
+DELETE {{baseUrl}}/addresses/1
+
+
+### ============ Tag ============
+
+### Create Tag
+POST {{baseUrl}}/tags
+Content-Type: application/json
+
+{
+  "name": "Electronics",
+  "slug": "electronics",
+  "isFeatured": true
+}
+
+### List Tags
+GET {{baseUrl}}/tags
+
+### Get Tag by id
+GET {{baseUrl}}/tags/1
+
+### Update Tag
+PATCH {{baseUrl}}/tags/1
+Content-Type: application/json
+
+{
+  "isFeatured": false
+}
+
+### Delete Tag
+DELETE {{baseUrl}}/tags/1
+
+
+### ============ Invoice ============
+
+### Create Invoice
+POST {{baseUrl}}/invoices
+Content-Type: application/json
+
+{
+  "invoiceNumber": "INV-001",
+  "totalAmount": 250,
+  "isPaid": false,
+  "issuedAt": "2026-09-21T00:00:00.000Z"
+}
+
+### List Invoices
+GET {{baseUrl}}/invoices
+
+### Get Invoice by id
+GET {{baseUrl}}/invoices/1
+
+### Update Invoice
+PATCH {{baseUrl}}/invoices/1
+Content-Type: application/json
+
+{
+  "isPaid": true
+}
+
+### Delete Invoice
+DELETE {{baseUrl}}/invoices/1
+
+
+### ============ Employee ============
+
+### Create Employee
+POST {{baseUrl}}/employees
+Content-Type: application/json
+
+{
+  "name": "Kim Minjun",
+  "role": "Engineer",
+  "hireDate": "2024-01-15T00:00:00.000Z",
+  "isActive": true
+}
+
+### List Employees
+GET {{baseUrl}}/employees
+
+### Get Employee by id
+GET {{baseUrl}}/employees/1
+
+### Update Employee
+PATCH {{baseUrl}}/employees/1
+Content-Type: application/json
+
+{
+  "role": "Senior Engineer"
+}
+
+### Delete Employee
+DELETE {{baseUrl}}/employees/1
+
+
+### ============ Notification ============
+
+### Create Notification
+POST {{baseUrl}}/notifications
+Content-Type: application/json
+
+{
+  "title": "Order shipped",
+  "message": "Your order has shipped",
+  "isRead": false
+}
+
+### List Notifications
+GET {{baseUrl}}/notifications
+
+### Get Notification by id
+GET {{baseUrl}}/notifications/1
+
+### Update Notification
+PATCH {{baseUrl}}/notifications/1
+Content-Type: application/json
+
+{
+  "isRead": true
+}
+
+### Delete Notification
+DELETE {{baseUrl}}/notifications/1
+
+
+### ============ Brand ============
+
+### Create Brand
+POST {{baseUrl}}/brands
+Content-Type: application/json
+
+{
+  "name": "Nova",
+  "isActive": true
+}
+
+### List Brands
+GET {{baseUrl}}/brands
+
+### Get Brand by id
+GET {{baseUrl}}/brands/1
+
+### Update Brand
+PATCH {{baseUrl}}/brands/1
+Content-Type: application/json
+
+{
+  "country": "South Korea"
+}
+
+### Delete Brand
+DELETE {{baseUrl}}/brands/1
+
+
+### ============ Wishlist ============
+
+### Create Wishlist
+POST {{baseUrl}}/wishlists
+Content-Type: application/json
+
+{
+  "itemName": "Headphones",
+  "isPurchased": false
+}
+
+### List Wishlists
+GET {{baseUrl}}/wishlists
+
+### Get Wishlist by id
+GET {{baseUrl}}/wishlists/1
+
+### Update Wishlist
+PATCH {{baseUrl}}/wishlists/1
+Content-Type: application/json
+
+{
+  "isPurchased": true
+}
+
+### Delete Wishlist
+DELETE {{baseUrl}}/wishlists/1
+
+
+### ============ Subscription ============
+
+### Create Subscription
+POST {{baseUrl}}/subscriptions
+Content-Type: application/json
+
+{
+  "planName": "Pro",
+  "price": 29,
+  "isActive": true,
+  "startedAt": "2026-09-21T00:00:00.000Z"
+}
+
+### List Subscriptions
+GET {{baseUrl}}/subscriptions
+
+### Get Subscription by id
+GET {{baseUrl}}/subscriptions/1
+
+### Update Subscription
+PATCH {{baseUrl}}/subscriptions/1
+Content-Type: application/json
+
+{
+  "isActive": false
+}
+
+### Delete Subscription
+DELETE {{baseUrl}}/subscriptions/1
+
+
+### ============ Return ============
+
+### Create Return
+POST {{baseUrl}}/returns
+Content-Type: application/json
+
+{
+  "reason": "Defective item",
+  "isApproved": false,
+  "requestedAt": "2026-09-22T00:00:00.000Z"
+}
+
+### List Returns
+GET {{baseUrl}}/returns
+
+### Get Return by id
+GET {{baseUrl}}/returns/1
+
+### Update Return
+PATCH {{baseUrl}}/returns/1
+Content-Type: application/json
+
+{
+  "isApproved": true
+}
+
+### Delete Return
+DELETE {{baseUrl}}/returns/1
+
+
+### ============ Feature: Inventory Summary ============
+
+### Get inventory summary (composes ProductService)
+GET {{baseUrl}}/inventory-summary
