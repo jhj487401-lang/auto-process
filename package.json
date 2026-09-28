@@ -26,7 +26,9 @@
     "prisma:generate": "prisma generate --schema=prisma/schema",
     "prisma:migrate": "prisma migrate dev --schema=prisma/schema",
     "prisma:push": "prisma db push --schema=prisma/schema",
-    "prisma:studio": "prisma studio --schema=prisma/schema"
+    "prisma:studio": "prisma studio --schema=prisma/schema",
+    "frontend:install": "npm --prefix frontend install",
+    "frontend:dev": "npm --prefix frontend run dev"
   },
   "dependencies": {
     "@nestjs/common": "^12.0.1",

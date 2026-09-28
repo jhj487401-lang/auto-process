@@ -31,6 +31,9 @@ actual package files out of OneDrive's sync scope. If you move this project
 to a non-OneDrive path, you can delete the junction and let a plain
 `npm install` recreate a normal `node_modules` folder.
 
+`frontend/node_modules` is a separate junction for the same reason, pointing
+to `C:\Users\<you>\.dev-node-modules\auto-process-frontend\node_modules`.
+
 ## Getting started
 
 ```bash
@@ -46,6 +49,23 @@ endpoints, request/response shapes, and a "Try it out" button to call them
 directly from the browser. DTO field types are picked up automatically via
 the `@nestjs/swagger` CLI plugin (`nest-cli.json`), so generated entities
 never need manual `@ApiProperty()` decorators.
+
+## Admin frontend (`frontend/`)
+
+A React + Vite admin dashboard that reads the backend's own OpenAPI document
+(`/api-json`) at runtime and builds the entity list, tables and forms from
+it — there is no per-entity frontend code. Generate a new backend entity and
+it appears in the sidebar with a working table + create/edit form after a
+page refresh; nothing in `frontend/` needs to change.
+
+```bash
+npm run frontend:install   # first time only
+npm run frontend:dev       # starts on http://localhost:5173
+```
+
+The backend must be running (`npm run start:dev`) with CORS enabled (already
+on by default in `src/main.ts`). See `frontend/.env.example` if the API runs
+somewhere other than `http://localhost:3000`.
 
 ### Local database (no Docker/Postgres install needed)
 
